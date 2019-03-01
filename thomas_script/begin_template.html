@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<!-- fichier tableau.html -->
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="https://img.icons8.com/color/64/000000/cat.png">
+    <title>CAT Tools -- Genes Results</title>
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
+	<!-- DataTable style -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<!-- column Visibility -->
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+	<!-- column Reorder -->
+	<script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.1/js/dataTables.colReorder.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.5.1/css/colReorder.dataTables.min.css">
+	<!-- Fixed Header -->
+	<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.dataTables.min.css">
+	<!-- Icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script type="text/javascript">
+        var plusImg= "https://img.icons8.com/color/48/000000/plus.png";
+		var minusImg= "https://img.icons8.com/color/48/000000/minus.png";
+        $(document).ready(function(){
+			$('#tab').DataTable({
+				fixedHeader: true,
+				colReorder: true,
+				dom: 'Bfrtip',
+				buttons: ['colvis']
+			});
+			$(".Expander").click(function() {
+				if($(this).parent().siblings('td').find('.collapse').hasClass("collapse")) {
+					$(this).parent().siblings('td').find('.collapse').removeClass("collapse").addClass("expand");
+					}
+				else {
+					$(this).parent().siblings('td').find('.expand').removeClass("expand").addClass("collapse");
+					}
+			});	
+        });
+    </script>
+    <style>
+.collapse {
+    height: 4.6em;
+    overflow: hidden;
+}
+a {
+	background-color: white;
+	display: inline-block;
+	border-style: solid;
+	border-color: CornflowerBlue;
+	border-width: 1px 3px 3px 1px;
+	color: DarkBlue	;
+	padding: 4px 6px 4px 6px;
+	margin: 3px;
+	border-radius: 5px;
+	position: relative;
+	text-decoration: none;
+
+}
+
+a:hover {
+  background-color: #DEEEFE;
+  cursor: pointer;
+}
+
+a:active {
+  border-width: 1px;
+  top: 2px;
+  left: 2px;
+}
+    </style>
+</head>
+
+<body>
+<center><div><img style="margin-top: 0px" src="https://img.icons8.com/color/100/000000/cat.png"><h1 class="orange-text" style="display: inline; font-size: 6em">CAT Tools</h1></div>
+<h3 class="grey-text" style="">Thomas Reuslt</h3></center>
+	<table id='tab' class='display nowrap' style="width:100%">
+        <caption>Genes</caption>
+        <thead>
+            <tr>
+				<th>Expand</th>
+				<th>Gene Symbol</th>
+            	<th>Specie</th>
+                <th>Gene (NCBI)</th>
+                <th>Transcripts id (Refseq)</th>
+                <th>Proteins id (Refseq)</th>
+                <th>KEGG id</th>
+				<th>KEGG Pathway</th>
+                <th>Gene id (Ensembl)<br>Genome Browser + Ortholog</th>
+                <th>Transcripts (Ensembl)</th>
+                <th>Proteins (Ensembl)</th>
+				<th>UNIPROT id</th>
+                <th>Protein name (UNIPROT)</th>
+                <th>Biological process(GO)</th>
+                <th>Molecular function(GO)</th>
+                <th>Cellular component(GO)</th>
+                <th>PDB id</th>
+                <th>Interactions (STRING)</th>
+                <th>PROSITE id</th>
+				<th>Pfam id</th>
+			</tr>
+        </thead>
+        <tbody>
+

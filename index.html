@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CAT Tools</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="https://img.icons8.com/color/64/000000/cat.png">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
+   <script> 
+function ChangeDiv(){
+$('#Form').hide();
+$('#Loading').show();
+}
+	
+   function bs_input_file() {
+	$(".input-file").before(
+		function() {
+			if ( ! $(this).prev().hasClass('input-ghost') ) {
+				var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+				element.attr("name",$(this).attr("name"));
+				element.change(function(){
+					element.next(element).find('input').val((element.val()).split('\\').pop());
+				});
+				$(this).find("button.btn-choose").click(function(){
+					element.click();
+				});
+				$(this).find("button.btn-reset").click(function(){
+					element.val(null);
+					$(this).parents(".input-file").find('input').val('');
+				});
+				$(this).find('input').css("cursor","pointer");
+				$(this).find('input').mousedown(function() {
+					$(this).parents('.input-file').prev().click();
+					return false;
+				});
+				return element;
+			}
+		}
+	);
+}
+$(function() {
+	bs_input_file();
+});
+
+</script>  
+<style>
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+#Loader {
+  position: relative;
+  margin: 0 auto;
+  top: 25vh;
+  width: 100vw;
+  text-align: center;
+  font-family: 'Amatic SC';
+  font-size: 6vh;
+  color: #333;
+  opacity: 0.75;
+  animation: pulse 2.5s linear infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.2, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0.25;
+  }
+}
+
+</style>       
+</head>
+
+<body>
+<center><div><img style="margin-top: -60px" src="https://img.icons8.com/color/100/000000/cat.png"><h1 class="display-1 orange-text" style="display: inline;">CAT Tools</h1></div>
+<h3 class="grey-text" style="">Chloé, Alba, Thomas Tools</h3></center>
+<div id="Form">
+	<form name="input_form" action="gene_input.php" method="POST" enctype="multipart/form-data">
+		<fieldset>
+		<center>
+		<legend><h1 class="blue-text">Get the gene information</h1></legend>
+		<h4>Use the Gene_Symbol and the organism to get all the data from the principale databases
+		</h4>
+		<p>Use a csv format with the gene_symbol then the organism,     <span style="color:grey">Example: RAD51 \tab Homo sapiens</span></p>
+		<div class="form-group w-50">
+        <div class="input-group input-file d-flex" name="import_file">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-choose blue-gradient white-text" type="button">Choose</button>
+            </span>
+            <input type="text" class="form-control" style="margin:auto" placeholder='Choose a file...' required />
+            <span class="input-group-btn">
+                 <button class="btn btn-warning btn-reset peach-gradient white-text" type="button">Reset</button>
+            </span>
+        </div>
+    </div>
+		<h3>
+		Select which script will be run<br>
+		</h3>
+		<div class="custom-control custom-radio custom-control-inline">
+			<input type="radio" class="custom-control-input" id="thomas" name="script_name" value="thomas" checked>
+			<label class="custom-control-label" for="thomas">Thomas Renne</label>
+		</div>
+		<div class="custom-control custom-radio custom-control-inline">
+			<input type="radio" class="custom-control-input" id="nom2" name="script_name" value="alba">
+			<label class="custom-control-label" for="nom2">Alba Caparros-Roissard</label>
+		</div>
+		<div class="custom-control custom-radio custom-control-inline">
+			<input type="radio" class="custom-control-input" id="nom3" name="script_name" value="chloe">
+			<label class="custom-control-label" for="nom3">Chloé Beaumont</label>
+		</div>
+		<p>
+		<input class="btn peach-gradient" type="reset" value="Reset">
+		<a class="btn blue-gradient" href="/ProjetM1/thomas_script/Example.html">Result Example</a>
+		<input class="btn blue-gradient" type="submit" value="Submit" onclick="ChangeDiv()">
+		</p>
+		
+		</center>
+		
+		</fieldset>
+	</form>
+</div>
+
+<div id="Loading" style="display:none;">
+	<center>
+	<div style="width: 20rem; height: 20rem; position: fixed; top: 40%; left: 50%; margin-top: -10rem; margin-left: -10rem;">
+		<div class="spinner-grow slow blue-gradient" style="width: 20rem; height: 20rem; role="status">
+		  <span class="sr-only">Loading...</span>
+		</div>
+		<h1 id="Loader" style="position: fixed; top: 65%; left: 0%;">Python in progress..</h1>
+		<a class="btn blue-gradient" href="../">Return to selection page</a>		
+		</div>
+	</div>
+	</center>
+</div>
+<footer style="position: fixed; top: 90%;">
+<a href="https://icons8.com/icon/16017/cat">Cat icon by Icons8</a><br>
+<a href="https://icons8.com/icon/63650/plus">Plus icon by Icons8</a><br>
+<a href="https://icons8.com/icon/12386/minus">Minus icon by Icons8</a><br>
+</footer>
+</body>
+</html>
+
+

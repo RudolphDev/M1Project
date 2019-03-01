@@ -1,0 +1,10 @@
+brca2	Homo sapiens 
+sms-2	Caenorhabditis elegans
+col1a1	mus musculus
+RAD51	homo sapiens
+DMD	mus musculus
+CDH2	gallus gallus
+TP53	danio rerio
+RAD51	pan troglodytes
+TP53	danio rerio
+PHYB	arabidopsis thaliana
